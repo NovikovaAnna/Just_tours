@@ -1,0 +1,21 @@
+<div>
+  <p-tabView>
+    <p-tabPanel [cache]="isTabCaching" header="Авторизация">
+      <ng-template pTemplate="content">
+      <app-authorization
+        [inputProp] = "userName"
+        [inputObj]="someObj"
+      >
+      </app-authorization>
+      </ng-template>
+    </p-tabPanel>
+    <p-tabPanel header="Регистрация">
+      <app-registration></app-registration>
+    </p-tabPanel>
+
+  </p-tabView>
+  <!--Определяем обработчик событий при изменении текущего и предыдущего значения -->
+  <p (click)="changeProp()"></p>
+
+</div>
+<p-toast position="top-left"></p-toast>

@@ -1,0 +1,37 @@
+<div *ngIf="tickets">
+  <div *ngIf="renderComplete">
+    <div>
+      <p>Количество элементов: {{tickets.length}}</p> <!-- или {{tourWrap.childElementCount}} -->
+      <p>Активный элемент: {{blockDirective.activeElementIndex}}</p>
+      <!-- Поиск туров -->
+      <div>
+        Найти тур: <input (input)="findTours($event)" type="text" pInputText />
+      </div>
+    </div>
+  </div>
+  <!-- Директива -->
+  <div appBlockStyle
+       #tourWrap
+       #blockDirective ='blocksStyle'
+       [selector]="'.ticket-item'"
+       [initFirst] = "true"
+       (renderComplete)="directiveRenderComplete($event)"
+
+       class="d-flex flex-wrap justify-content-around">
+
+    <!-- Динамическое добавление элементов -->
+    <!-- перебираем элемент и кликаем -->
+    <div class="ticket-item col-3 m-2"
+         (click)="goToTicketInfoPage(item)"
+         *ngFor="let item of tickets; let i = index">
+      <!--<div><input (input)="findTours($event)" type="text" pInputText /></div> -->
+      <!-- выводится с помощью интерполяции -->
+      <div class="ticket-title">{{item.name}}</div>
+      <div class="ticket-img">
+        <img class="w-100" src="/assets/img/{{item.img}}">
+      </div>
+    </div>
+  </div>
+</div>
+
+
