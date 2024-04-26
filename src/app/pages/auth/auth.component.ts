@@ -10,13 +10,13 @@ import {AuthService} from "../../services/auth/auth.service";
 })
 export class AuthComponent implements OnInit {
 
-  userName = "Elizabeth";
+  userName = "Anna";
 
   constructor(private authService: AuthService) { }
   isTabCaching: boolean = false;
   someObj: any;
   obj = {a: 1};
-  textProp = "Eliza"
+  textProp = "Ann"
 
   ngOnInit(): void {
     this.someObj = this.obj;
